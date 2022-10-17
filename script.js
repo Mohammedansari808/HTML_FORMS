@@ -1,5 +1,9 @@
 
-
+let para = document.createElement("p")
+para.setAttribute("id","description")
+para.innerHTML="FILL THE FORM CAREFULLY"
+para.style.textAlign="center"
+para.style.fontFamily="Verdana, Geneva, Tahoma, sans-serif"
 
 
 
@@ -34,6 +38,8 @@ function inputs(tagname,typename,typevalue,idname,idvalue,Name,namevalue){
     ele.setAttribute(Name,namevalue);
     return ele
 }
+
+
 function forms(tagname,attrname,attrvalue){
     let ele = document.createElement(tagname);
     ele.setAttribute(attrname,attrvalue)
@@ -41,35 +47,52 @@ function forms(tagname,attrname,attrvalue){
 }
 
 
-
 let container= document.createElement('div')
 container.setAttribute("class","container")
+container.style.height="auto"
+container.style.width="700px"
+container.style.marginBottom='10px'
+container.style.borderRadius="10px"
+container.style.paddingLeft="90px"
+container.style.paddingBottom ="20px"
+container.style.boxShadow= "4px 4px 30px black";
+
  let row = document.createElement("div")
  row.setAttribute("class",'row')
-let col1 = document.createElement("div")
-col1.setAttribute("class","col-md-6")
-let col2 = document.createElement("div")
-col2.setAttribute("class","col-md-6")
 
 
-let form = forms("form","id","myform")
-let labelf = labels("label","for","firstname","Firstname")
+
+let form = forms("form","id","form")
+form.setAttribute("action" ,'#')
+form.setAttribute("return",false)
+form.style.marginBottom="55px"
+let labelf = labels("label","for","first-name","Firstame")
+
 let br1 = breaks("br")
-let inputf = inputs("input","type","text","id","firstname")
+let inputf = inputs("input","type","text","id","first-name")
+inputf.setAttribute("placeholder","firstname")
+inputf.setAttribute("required","")
 let br2 = breaks("br")
-let labell = labels("label","for","lastname","Lastname")
+let labell = labels("label","for","last-name","Lastname")
 let br3 = breaks("br")
-let inputl = inputs("input","type","text","id","lastname")
+let inputl = inputs("input","type","text","id","last-name")
+inputl.setAttribute("placeholder",'lastname')
+inputl.setAttribute("required","")
 let br4 =breaks("br")
 
 let labela = labels("label","for","address","Address")
 let br5 =breaks("br")
-let inputa = inputs("input","type","text","id","address")
+let inputa = inputs("textarea","name","text","id","address")
+inputa.setAttribute("cols",33)
+inputa.setAttribute("placeholder","address")
+inputa.setAttribute("required","")
 let br6 =breaks("br")
 
 let labelp = labels("label","for","pincode","Pincode")
 let br7 =breaks("br")
 let inputp = inputs("input","type","text","id","pincode")
+inputp.setAttribute("placeholder","pincode")
+inputp.setAttribute("required","")
 let br8 =breaks("br")
 
 let gender= division("div","class","gender","Gender")
@@ -108,32 +131,51 @@ let br15 =breaks("br")
 let labelstate = labels("label","for","state","State")
 let br16 =breaks("br")
 let inputstate = inputs("input","type","text","id","state")
+inputstate.setAttribute("placeholder","state")
+inputstate.setAttribute("required","")
 let br17 =breaks("br")
 let labelcountry = labels("label","for","country","Country")
 let br18 =breaks("br")
 let inputcountry = inputs("input","type","text","id","country")
+inputcountry.setAttribute("required","")
+inputcountry.setAttribute("placeholder","country")
 let br19 = breaks("br")
 
 
-let button = document.createElement("input")
-button.setAttribute("type","button");
-button.setAttribute("value","Submit");
-button.style.marginTop="20px"
 
 
+let submit = document.createElement("input");
+submit.setAttribute("type","submit");
+submit.setAttribute("id",'submit')
+submit.setAttribute("class","btn btn-primary")
+submit.setAttribute("onsubmit",display)
 
 
-col1.append(labelf,br1,inputf,br2,labela,br5,inputa,br6,
-    gender,labelm,inputm,br9,labelfe,inputfe,br10,
-    
-    labelstate,br16,inputstate,br17,labelcountry,br18,inputcountry,br19,button)
-col2.append(labell,br3,inputl,br4,labelp,br7,inputp,br8,choiceoffood,labelind,inputind,br11,
-    labelchin,inputchin,br12,labelarab,inputarab,br13,labelthai,inputthai,br14,labeldes,inputdes,br15,)
+let formG1 = forms('div',"class","form-group");
+formG1.append(labelf,br1,inputf,br2);
+let formG2 = forms('div',"class","form-group");
+formG2.append(labell,br3,inputl,br4)
+let formG3 = forms('div',"class","form-group");
+formG3.append(gender,labelm,inputm,br9,labelfe,inputfe,br10)
+let formG4 = forms('div',"class","form-group");
+formG4.append(labelstate,br16,inputstate,br17)
+let formG5 = forms('div',"class","form-group");
+formG5.append(labelcountry,br18,inputcountry,br19)
 
-container.append(form)
-row.append(col1,col2) 
+let formG6 = forms('div',"class","form-group");
+formG6.append(labela,br5,inputa,br6)
+let formG7 = forms('div',"class","form-group");
+formG7.append(labelp,br7,inputp,br8)
+let formG8 = forms('div',"class","form-group");
+formG8.append(choiceoffood,labelind,inputind,br11,
+    labelchin,inputchin,br12,labelarab,inputarab,br13,labelthai,inputthai,br14,labeldes,inputdes,br15);
+let formG9 = forms('div',"class","form-group");
+formG9.append(submit)
+form.append(formG1,formG2,formG3,formG4,formG5,formG6,formG7,formG8,formG9)
+
+container.append(form) 
 form.append(row)
-document.body.append(container)
+document.body.append(para,container)
 
 //CODE FOR FORM ENDS
 
@@ -170,18 +212,18 @@ table.append(thead);
 document.body.append(table)
 
 // CODE FOR TABLE ENDS
-button.addEventListener('click',display)
 
+submit.addEventListener("click",display)
 
 function display(){
 
     let row2 = document.createElement("tr")
 
-    
-    let first_name = document.getElementById("firstname").value
+    let tbody = document.createElement("tbody")
+    let first_name = document.getElementById("first-name").value
     let tdataF = document.createElement("td")
     tdataF.innerHTML =first_name
-    let last_name = document.getElementById("lastname").value
+    let last_name = document.getElementById("last-name").value
     let tdataL = document.createElement("td")
     tdataL.innerHTML =last_name
 
@@ -208,7 +250,7 @@ function display(){
     let tdataM = document.createElement("td")
 if (Gender[0].checked == true){
     tdataM.innerHTML ="Male"
-}else{
+}else if (Gender[1].checked == true){
     tdataM.innerHTML ="Female"
 }
 
@@ -254,10 +296,11 @@ tdc.innerHTML=arr
 
 
 row2.append(tdataF,tdataL,tdataM,tdataA,tdataP,tdataS,tdataC,tdc)
-    table.append(row2)
+tbody.append(row2)
+    table.append(tbody)
 
        
-document.getElementById("myform").reset();
+document.getElementById("form").reset();
 
    
 
