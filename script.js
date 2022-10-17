@@ -66,7 +66,7 @@ let form = forms("form","id","form")
 form.setAttribute("action" ,'#')
 form.setAttribute("return",false)
 form.style.marginBottom="55px"
-let labelf = labels("label","for","first-name","Firstame")
+let labelf = labels("label","for","first-name","Firstname")
 
 let br1 = breaks("br")
 let inputf = inputs("input","type","text","id","first-name")
