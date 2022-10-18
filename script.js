@@ -172,13 +172,14 @@ formG8.append(choiceoffood,labelind,inputind,br11,
 let formG9 = forms('div',"class","form-group");
 formG9.append(submit)
 form.append(formG1,formG2,formG3,formG4,formG5,formG6,formG7,formG8,formG9)
+
+
 let col1 = document.createElement("div")
 col1.setAttribute("class","col-md-6")
 col1.append(form)
 container.append(col1) 
 form.append(row)
 document.body.append(para,container)
-
 //CODE FOR FORM ENDS
 
 //CODE FOR TABLE STARTS
