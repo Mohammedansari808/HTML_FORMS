@@ -1,7 +1,7 @@
 
 let para = document.createElement("p")
 para.setAttribute("id","description")
-para.innerHTML="FILL THE FORM CAREFULLY"
+para.innerHTML="AFTER SUBMISSION SEE THE TABLE WHICH IS BELOW THE FORM"
 para.style.textAlign="center"
 para.style.fontFamily="Verdana, Geneva, Tahoma, sans-serif"
 
